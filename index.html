@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Para Ti ❤️</title>
+<style>
+    body {
+        margin: 0;
+        height: 100vh;
+        background: linear-gradient(#ffe6eb, #fff);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-family: 'Georgia', serif;
+        overflow: hidden;
+    }
+
+    .envelope {
+        width: 280px;
+        height: 180px;
+        background: #fff;
+        position: relative;
+        cursor: pointer;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        border-radius: 6px;
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 15px;
+    }
+
+    .envelope::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        border-left: 140px solid transparent;
+        border-right: 140px solid transparent;
+        border-top: 90px solid #f4b6c2;
+    }
+
+    .envelope-text {
+        z-index: 2;
+        font-size: 14px;
+        color: #333;
+    }
+
+    .letter {
+        display: none;
+        width: 90%;
+        max-width: 600px;
+        background: #fff;
+        padding: 25px;
+        border-radius: 10px;
+        box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+        overflow-y: auto;
+        max-height: 80vh;
+    }
+
+    .letter p {
+        line-height: 1.6;
+        margin-bottom: 15px;
+        color: #333;
+    }
+
+    button {
+        display: block;
+        margin: 25px auto 0;
+        padding: 10px 20px;
+        border: none;
+        background: #ff5c8a;
+        color: #fff;
+        font-size: 16px;
+        border-radius: 20px;
+        cursor: pointer;
+    }
+
+    .hearts {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        display: none;
+    }
+
+    .heart {
+        position: absolute;
+        color: #ff5c8a;
+        font-size: 20px;
+        animation: float 4s linear infinite;
+    }
+
+    @keyframes float {
+        from {
+            transform: translateY(100vh);
+            opacity: 1;
+        }
+        to {
+            transform: translateY(-10vh);
+            opacity: 0;
+        }
+    }
+
+    .love-text {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 32px;
+        color: #ff3366;
+        display: none;
+        font-weight: bold;
+    }
+</style>
+</head>
+<body>
+
+<div class="envelope" onclick="openLetter()">
+    <div class="envelope-text">
+        Espero que con esto te puedas sentir un poco mejor 💌
+    </div>
+</div>
+
+<div class="letter" id="letter">
+    <p>Todos los días quiero decirte lo realmente hermosa que eres para mí y cuánto llego a amarte, mi amor por ti crece con el paso de los días mientras más tiempo estemos juntos, más profundo se vuelve lo que siento.</p>
+
+    <p>Siempre he imaginado un momento en el que estemos solo tú y yo, no importa el lugar ni el tiempo lo único esencial es que estemos juntos, compartiendo miradas y sonrisas que dicen más que cualquier palabra, quiero admirarte en silencio, contemplar a la persona que me enamora sin importar nada más.</p>
+
+    <p>Solo pido estar contigo, tocar tu cabello, tomar tus manos, dejar que me conquistes con tu sonrisa y que me derritas con tu mirada. Puede que para muchos esto sea poco, pero para mí es el tesoro más valioso del universo, lo que deseo no es material ni promesas vacías, sino algo simple y puro: tenerte a mi lado.</p>
+
+    <p>Quiero estar contigo en las buenas y en las malas. No deseo apartarme de tu vida y mientras tanto, seguiré a tu lado y prometo amarte en cada hora, en cada minuto y en cada segundo de mi vida, hasta mi último aliento.</p>
+
+    <p>En serio amor, siento mucho que hoy no te sientas al 100, pero esto es pasajero y yo sé que mañana tu brillo volverá a ti. Esto es parte de uno y es inevitable, pero siempre, pero siempre tendrás a alguien que te saque aunque sea una pequeña sonrisa… sisisi, ese soy yo jiji.</p>
+
+    <p><strong>Te amo mi colochita ❤️</strong></p>
+
+    <button onclick="showLove()">Presióname</button>
+</div>
+
+<div class="hearts" id="hearts"></div>
+<div class="love-text" id="loveText">💖 Te amo 💖</div>
+
+<script>
+function openLetter() {
+    document.querySelector('.envelope').style.display = 'none';
+    document.getElementById('letter').style.display = 'block';
+}
+
+function showLove() {
+    const hearts = document.getElementById('hearts');
+    const loveText = document.getElementById('loveText');
+    hearts.style.display = 'block';
+    loveText.style.display = 'block';
+
+    for (let i = 0; i < 40; i++) {
+        const heart = document.createElement('div');
+        heart.className = 'heart';
+        heart.style.left = Math.random() * 100 + 'vw';
+        heart.style.animationDuration = (Math.random() * 2 + 3) + 's';
+        heart.innerHTML = '❤️';
+        hearts.appendChild(heart);
+
+        setTimeout(() => heart.remove(), 4000);
+    }
+}
+</script>
+
+</body>
+</html>
